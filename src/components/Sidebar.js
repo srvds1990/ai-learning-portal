@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaHome, FaListUl, FaRobot } from "react-icons/fa"; // Import FaRobot icon
+import { FaHome, FaListUl, FaRobot, FaMicrochip } from "react-icons/fa"; // Import FaMicrochip icon
 
 function Sidebar() {
   const location = useLocation();
@@ -27,10 +27,18 @@ function Sidebar() {
         </li>
         <li>
           <Link
-            to="/gpt" // This is the new link for the GPT page
+            to="/gpt"
             className={location.pathname === "/gpt" ? "active" : ""}
           >
             <FaRobot /> What is GPT?
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/llm-providers" // New link for LLM providers
+            className={location.pathname === "/llm-providers" ? "active" : ""}
+          >
+            <FaMicrochip /> LLM Providers
           </Link>
         </li>
       </ul>

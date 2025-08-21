@@ -1,38 +1,230 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+  --color-primary: #007BFF;
+  --color-secondary: #34495e;
+  --color-background-light: #F8F9FA;
+  --color-background-dark: #2c3e50;
+  --color-text: #495057;
+  --color-accent: #28a745;
+  --color-border: #e6e9ef;
+  --color-card-bg: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background-light);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-secondary);
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--color-background-dark);
+  color: #fff;
+  padding: 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
   text-align: center;
+  color: #fff;
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 24px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar ul {
+  list-style: none;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sidebar li a {
+  display: block;
+  padding: 15px 25px;
+  color: #dee2e6;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-header {
-  background-color: #282c34;
+.sidebar li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.sidebar li a.active {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.content-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 15px;
+}
+
+.home-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  padding: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.home-container h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.home-container p {
+  font-size: 1.25rem;
+  max-width: 800px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.home-button {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.home-button:hover {
+  background: #fff;
+  color: #764ba2;
+}
+
+.card {
+  background: var(--color-card-bg);
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: #ecf0f1;
+  cursor: pointer;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-btn {
+  border: none;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--color-secondary);
+}
+
+.card-body {
+  padding: 18px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.diagram {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.diagram-image {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.diagram-caption {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-top: 6px;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: var(--color-card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.comparison-table thead th {
+  background: var(--color-secondary);
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  .sidebar {
+    width: 100%;
+    position: static;
+    box-shadow: none;
+    padding: 10px 0;
   }
 }

@@ -217,14 +217,109 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 
-@media (max-width: 768px) {
-  .app-container {
-    flex-direction: column;
-  }
-  .sidebar {
-    width: 100%;
-    position: static;
-    box-shadow: none;
-    padding: 10px 0;
-  }
+/* Fixes the table header on scroll */
+.table-fixed-header {
+  height: 60vh; /* Adjust as needed */
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-card-bg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.table-fixed-header table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.table-fixed-header thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table-fixed-header thead th {
+  background-color: var(--color-secondary);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 14px;
+}
+
+.table-fixed-header tbody td {
+  padding: 12px 14px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+/* Ensure header and body columns align */
+.comparison-table thead,
+.comparison-table tbody {
+  display: block;
+}
+
+.comparison-table thead tr,
+.comparison-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Add a bottom border to the last row of the header for better visual separation */
+.comparison-table thead tr:last-child {
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/*
+  =======================================
+  New Tab Navigation Styles
+  =======================================
+*/
+.tab-navigation {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--color-border);
+  gap: 10px;
+}
+
+.tab-navigation button {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--color-text);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.tab-navigation button:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+  color: var(--color-primary);
+}
+
+.tab-navigation button.active {
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.tab-content {
+  background-color: var(--color-card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }

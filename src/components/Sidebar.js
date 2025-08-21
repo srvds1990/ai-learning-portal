@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaHome, FaListUl, FaRobot, FaMicrochip } from "react-icons/fa"; // Import FaMicrochip icon
+import { FaHome, FaListUl, FaRobot, FaMicrochip, FaCommentDots, FaPaperPlane } from "react-icons/fa";
 
 function Sidebar() {
   const location = useLocation();
@@ -35,10 +35,26 @@ function Sidebar() {
         </li>
         <li>
           <Link
-            to="/llm-providers" // New link for LLM providers
+            to="/llm-providers"
             className={location.pathname === "/llm-providers" ? "active" : ""}
           >
             <FaMicrochip /> LLM Providers
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/rag"
+            className={location.pathname === "/rag" ? "active" : ""}
+          >
+            <FaCommentDots /> My RAG App
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/feedback" // New link for the feedback form
+            className={location.pathname === "/feedback" ? "active" : ""}
+          >
+            <FaPaperPlane /> Feedback
           </Link>
         </li>
       </ul>

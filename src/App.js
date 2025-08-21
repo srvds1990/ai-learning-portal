@@ -5,7 +5,9 @@ import Sidebar from "./components/Sidebar";
 import Agenda from "./components/Agenda";
 import Home from "./components/Home";
 import GPT from "./components/GPT";
-import LLMProviders from "./components/LLMProviders"; // Import the new component
+import LLMProviders from "./components/LLMProviders";
+import StreamlitApp from "./components/StreamlitApp";
+import FeedbackForm from "./components/FeedbackForm"; // Import the new component
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/gpt" element={<GPT />} />
-            <Route path="/llm-providers" element={<LLMProviders />} /> {/* New route */}
+            <Route path="/llm-providers" element={<LLMProviders />} />
+            <Route path="/rag" element={<StreamlitApp />} />
+            <Route path="/feedback" element={<FeedbackForm />} /> {/* New route */}
           </Routes>
         </div>
       </div>

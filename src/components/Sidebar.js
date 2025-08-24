@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaHome, FaListUl, FaRobot, FaMicrochip, FaCommentDots, FaPaperPlane } from "react-icons/fa";
+import { FaHome, FaListUl, FaRobot, FaMicrochip, FaCommentDots, FaPaperPlane, FaRegQuestionCircle } from "react-icons/fa";
 
 function Sidebar() {
   const location = useLocation();
@@ -55,6 +55,15 @@ function Sidebar() {
             className={location.pathname === "/feedback" ? "active" : ""}
           >
             <FaPaperPlane /> Feedback
+          </Link>
+        </li>
+        {/* New Quiz Link */}
+        <li>
+          <Link
+            to="/quiz"
+            className={location.pathname === "/quiz" ? "active" : ""}
+          >
+            <FaRegQuestionCircle /> 1st quiz sessions
           </Link>
         </li>
       </ul>

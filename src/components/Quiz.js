@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaLaptopCode } from 'react-icons/fa';
 import Header from './Header';
+import { db } from '../firebase';
+import { collection, addDoc } from "firebase/firestore";
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -10,8 +12,9 @@ const Quiz = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [hasAnswered, setHasAnswered] = useState(false);
   const [questions, setQuestions] = useState([]);
+  const [userName, setUserName] = useState('');
+  const [quizSubmitted, setQuizSubmitted] = useState(false);
 
-  // Three different quiz question sets to ensure variability
   const questionSets = [
     [
       {
@@ -156,11 +159,30 @@ const Quiz = () => {
     ]
   ];
 
-  // Randomly select a question set on component mount and restart
   useEffect(() => {
     const randomSetIndex = Math.floor(Math.random() * questionSets.length);
     setQuestions(questionSets[randomSetIndex]);
   }, []);
+
+  useEffect(() => {
+    if (showScore && userName && !quizSubmitted) {
+      const saveScore = async () => {
+        try {
+          await addDoc(collection(db, "scores"), {
+            name: userName,
+            score: score,
+            totalQuestions: questions.length,
+            timestamp: new Date()
+          });
+          setQuizSubmitted(true);
+          console.log("Score saved successfully!");
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      };
+      saveScore();
+    }
+  }, [showScore, userName, questions.length, score, quizSubmitted]);
 
   const handleAnswerOptionClick = (isCorrect, answerText) => {
     if (isCorrect) {
@@ -188,12 +210,15 @@ const Quiz = () => {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
+      const name = prompt("Please enter your name to save your score:");
+      if (name) {
+        setUserName(name);
+      }
       setShowScore(true);
     }
   };
   
   const handleRestartQuiz = () => {
-    // Select a new random quiz set on restart
     const randomSetIndex = Math.floor(Math.random() * questionSets.length);
     setQuestions(questionSets[randomSetIndex]);
     setCurrentQuestion(0);
@@ -202,6 +227,8 @@ const Quiz = () => {
     setUserAnswers([]);
     setSelectedAnswer(null);
     setHasAnswered(false);
+    setUserName('');
+    setQuizSubmitted(false);
   };
 
   return (
@@ -214,6 +241,7 @@ const Quiz = () => {
         {showScore ? (
           <div className="score-section">
             <h3 className="score-title">You scored {score} out of {questions.length}</h3>
+            {userName && <p className="thank-you-message">Thank you, {userName}! Your score has been submitted.</p>}
             <div className="review-section">
               {userAnswers.map((answer, index) => (
                 <div key={index} className="review-card">

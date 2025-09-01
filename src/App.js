@@ -9,6 +9,7 @@ import LLMProviders from "./components/LLMProviders";
 import StreamlitApp from "./components/StreamlitApp";
 import FeedbackForm from "./components/FeedbackForm"; // Import the new component
 import Quiz from './components/Quiz';
+import Leaderboard from './components/Leaderboard';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/rag" element={<StreamlitApp />} />
             <Route path="/feedback" element={<FeedbackForm />} /> {/* New route */}
             <Route path="/quiz" element={<Quiz />} /> {/* New Route */}
+            <Route path="/leaderboard" element={<Leaderboard />} />
           </Routes>
         </div>
       </div>

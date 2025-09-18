@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   FaHome,
   FaListUl,
@@ -9,6 +9,7 @@ import {
   FaPaperPlane,
   FaRegQuestionCircle,
   FaClipboardList,
+  FaExchangeAlt
 } from "react-icons/fa";
 
 function Sidebar() {
@@ -22,76 +23,86 @@ function Sidebar() {
       </h2>
       <ul>
         <li>
-          <Link
+          <NavLink
             to="/"
             className={location.pathname === "/" ? "active" : ""}
           >
             <FaHome /> Home
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link
+          <NavLink
             to="/agenda"
             className={location.pathname === "/agenda" ? "active" : ""}
           >
             <FaListUl /> AI vs ML vs DL vs LLM
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link
+          <NavLink
             to="/gpt"
             className={location.pathname === "/gpt" ? "active" : ""}
           >
             <FaRobot /> What is GPT?
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link
+          <NavLink
             to="/llm-providers"
             className={location.pathname === "/llm-providers" ? "active" : ""}
           >
             <FaMicrochip /> LLM Providers
-          </Link>
+          </NavLink>
         </li>
 
-        {/* 🔥 RAG App Link */}
+        {/* RAG App Link */}
         <li>
-          <Link
+          <NavLink
             to="/rag"
             className={location.pathname === "/rag" ? "active" : ""}
           >
             <FaCommentDots /> Gen AI Basic RAG App
-          </Link>
+          </NavLink>
+        </li>
+
+        {/* New Link for Prompt vs Fine Tune vs RAG */}
+        <li>
+          <NavLink
+            to="/prompt-rag-finetune"
+            className={location.pathname === "/prompt-rag-finetune" ? "active" : ""}
+          >
+            <FaExchangeAlt /> Prompt/RAG/Finetune
+          </NavLink>
         </li>
 
         <li>
-          <Link
+          <NavLink
             to="/feedback"
             className={location.pathname === "/feedback" ? "active" : ""}
           >
             <FaPaperPlane /> Feedback
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link
+          <NavLink
             to="/quiz"
             className={location.pathname === "/quiz" ? "active" : ""}
           >
             <FaRegQuestionCircle /> 1st Quiz Session
-          </Link>
+          </NavLink>
         </li>
 
         <li>
-          <Link
+          <NavLink
             to="/leaderboard"
             className={location.pathname === "/leaderboard" ? "active" : ""}
           >
             <FaClipboardList /> Leaderboard
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </div>
